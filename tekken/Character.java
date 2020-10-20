@@ -8,13 +8,14 @@ abstract class Characters{
 	abstract void kazuya();
 	abstract void king();
 	abstract void nina();
+	abstract void Hwoarang();
 }
 
 public class Character extends Characters{
 	
 	//class variables
 	String name;
-	String[] chr = {"1.Jin Kazama","2.Kazuya Mishima","3.King","4.Nina Williams"};
+	String[] chr = {"1.Jin Kazama","2.Kazuya Mishima","3.King","4.Nina Williams","5.Hwoarang"};
 	
 	//objects
 	Scanner sc = new Scanner(System.in);
@@ -45,13 +46,16 @@ public class Character extends Characters{
 		case 4:
 			nina();
 			break;
+		case 5:
+			Hwoarang();
+			break;
 		default:
 			System.out.println("This Character Dose not Exist");
 		}
 	}
 	
 	//Character Names without Numbers
-	String[] ChrName = {"Jin Kazama","Kazuya Mishima","King","Nina Williams"}; 
+	String[] ChrName = {"Jin Kazama","Kazuya Mishima","King","Nina Williams","Hwoarang"}; 
 	int randChr = rand.nextInt(ChrName.length);
 	
 	@Override
@@ -80,5 +84,11 @@ public class Character extends Characters{
 		System.out.println();
 		System.out.println("You have Selected Nina Williams");
 		r1.Round1(ChrName[3],ChrName[randChr]);
+	}
+	@Override
+	void Hwoarang() {
+		System.out.println();
+		System.out.println("You have Selected Hwoarang");
+		r1.Round1(ChrName[4],ChrName[randChr]);
 	}
 }
