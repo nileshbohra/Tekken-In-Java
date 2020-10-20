@@ -14,6 +14,8 @@ abstract class CharacterActions extends Stats {
 	abstract void punch(String player);
 
 	abstract void kick(String player);
+	
+	abstract void taunt(String Player);
 }
 
 public class Round {
@@ -40,7 +42,7 @@ class Fight extends CharacterActions {
 	void fightOptions(String Player) {
 		int n = 0;
 		while (health > 0) {
-			System.out.print("Enter" + "\n1.punch" + "\n2.kick");
+			System.out.print("Enter" + "\n1.punch" + "\n2.kick" +"\n3.Taunt");
 			System.out.println();
 			n = sc.nextInt();
 
@@ -50,6 +52,9 @@ class Fight extends CharacterActions {
 				break;
 			case 2:
 				kick(Player);
+				break;
+			case 3:
+				taunt(Player);
 				break;
 			default:
 				System.out.println("Wrong Input");
@@ -68,7 +73,7 @@ class Fight extends CharacterActions {
 			System.out.println(Player + " Punched" + "\nhealth: " + health);
 		}
 	}
-
+	
 	// kick
 	@Override
 	void kick(String Player) {
@@ -78,5 +83,11 @@ class Fight extends CharacterActions {
 		} else {
 			System.out.println(Player + " Kicked" + "\nhealth: " + health);
 		}
+	}
+	
+	//Taunt
+	@Override
+	void taunt(String Player) {
+		System.out.println(Player+" is Taunting");
 	}
 }
