@@ -68,7 +68,7 @@ class Fight extends CharacterActions {
 		// form Stats abstract class
 		health = health-punch;
 		if (health <= 0) {
-			System.out.println("Game Over"+"\n"+Player+" WINS");
+			System.out.println("*---- Game Over ----*"+"\n"+Player+" WINS");
 		} else {
 			System.out.println(Player + " Punched" + "\nhealth: " + health);
 		}
@@ -79,7 +79,7 @@ class Fight extends CharacterActions {
 	void kick(String Player) {
 		health = health - kick;
 		if (health <= 0) {
-			System.out.println("Game Over"+"\n"+Player+" WINS");
+			System.out.println("*---- Game Over ----*"+"\n"+Player+" WINS");
 		} else {
 			System.out.println(Player + " Kicked" + "\nhealth: " + health);
 		}
@@ -89,5 +89,6 @@ class Fight extends CharacterActions {
 	@Override
 	void taunt(String Player) {
 		System.out.println(Player+" is Taunting");
+		System.out.println("health: "+health);
 	}
 }
