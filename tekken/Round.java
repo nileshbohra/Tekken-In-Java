@@ -2,12 +2,14 @@ package tekken;
 
 import java.util.Scanner;
 
+//Abstract class Stats Shows Stats of all characters
 abstract class Stats {
 	int health = 100;
 	int punch = 20;
 	int kick = 40;
 }
 
+//Shows Actions a Player can Command to a Character
 abstract class CharacterActions extends Stats {
 	abstract void punch(String player);
 
