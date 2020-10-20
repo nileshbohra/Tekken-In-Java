@@ -5,9 +5,10 @@ import java.util.Scanner;
 //Abstract class Stats Shows Stats of all characters
 abstract class Stats {
 	int health = 100;
-	int punch = 10;
+	int punch = 15;
 	int kick = 30;
 	int upperKick = 40;
+	int grab = 5;
 }
 
 //Shows Actions a Player can Command to a Character
@@ -17,6 +18,8 @@ abstract class CharacterActions extends Stats {
 	abstract void kick(String player);
 	
 	abstract void upperKick(String Player);
+	
+	abstract void grab(String Player);
 	
 	abstract void taunt(String Player);
 }
@@ -45,7 +48,7 @@ class Fight extends CharacterActions {
 	void fightOptions(String Player) {
 		int n = 0;
 		while (health > 0) {
-			System.out.print("Enter" + "\n1.punch" + "\n2.kick" +"\n3.upperKick"+"\n4.Taunt");
+			System.out.print("Enter" + "\n1.punch" + "\n2.kick" +"\n3.upperKick"+"\n4.grab"+"\n5.Taunt");
 			System.out.println();
 			n = sc.nextInt();
 
@@ -60,6 +63,9 @@ class Fight extends CharacterActions {
 				upperKick(Player);
 				break;
 			case 4:
+				grab(Player);
+				break;
+			case 5:
 				taunt(Player);
 				break;
 			default:
@@ -98,6 +104,16 @@ class Fight extends CharacterActions {
 			System.out.println("*---- Game Over ----*"+"\n"+Player+" WINS");
 		} else {
 			System.out.println(Player + " Kicked on Upper Body" + "\nhealth: " + health);
+		}
+	}
+	
+	//grabbing
+	void grab(String Player) {
+		health = health - grab;
+		if (health <= 0) {
+			System.out.println("*---- Game Over ----*"+"\n"+Player+" WINS");
+		} else {
+			System.out.println(Player + " is Grabbing" + "\nhealth: " + health);
 		}
 	}
 	//Taunt
