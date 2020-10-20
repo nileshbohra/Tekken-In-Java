@@ -5,8 +5,9 @@ import java.util.Scanner;
 //Abstract class Stats Shows Stats of all characters
 abstract class Stats {
 	int health = 100;
-	int punch = 20;
-	int kick = 40;
+	int punch = 10;
+	int kick = 30;
+	int upperKick = 40;
 }
 
 //Shows Actions a Player can Command to a Character
@@ -14,6 +15,8 @@ abstract class CharacterActions extends Stats {
 	abstract void punch(String player);
 
 	abstract void kick(String player);
+	
+	abstract void upperKick(String Player);
 	
 	abstract void taunt(String Player);
 }
@@ -42,7 +45,7 @@ class Fight extends CharacterActions {
 	void fightOptions(String Player) {
 		int n = 0;
 		while (health > 0) {
-			System.out.print("Enter" + "\n1.punch" + "\n2.kick" +"\n3.Taunt");
+			System.out.print("Enter" + "\n1.punch" + "\n2.kick" +"\n3.upperKick"+"\n4.Taunt");
 			System.out.println();
 			n = sc.nextInt();
 
@@ -54,6 +57,9 @@ class Fight extends CharacterActions {
 				kick(Player);
 				break;
 			case 3:
+				upperKick(Player);
+				break;
+			case 4:
 				taunt(Player);
 				break;
 			default:
@@ -84,11 +90,22 @@ class Fight extends CharacterActions {
 			System.out.println(Player + " Kicked" + "\nhealth: " + health);
 		}
 	}
-	
+	//upperKick
+	@Override
+	void upperKick(String Player) {
+		health = health - upperKick;
+		if (health <= 0) {
+			System.out.println("*---- Game Over ----*"+"\n"+Player+" WINS");
+		} else {
+			System.out.println(Player + " Kicked on Upper Body" + "\nhealth: " + health);
+		}
+	}
 	//Taunt
 	@Override
 	void taunt(String Player) {
 		System.out.println(Player+" is Taunting");
 		System.out.println("health: "+health);
 	}
+	
+	
 }
